@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine 💖</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ff5f9e, #ff85b3);
+  font-family: 'Arial', sans-serif;
+  overflow: hidden;
+}
+
+.card {
+  background: white;
+  padding: 45px 50px;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+  animation: pop 0.8s ease;
+}
+
+@keyframes pop {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+h1 {
+  color: #b30059;
+  margin-bottom: 35px;
+  font-size: 32px;
+}
+
+.buttons {
+  position: relative;
+  height: 150px;
+}
+
+.yes {
+  font-size: 30px;
+  padding: 30px 90px;
+  background: linear-gradient(135deg, crimson, #ff3366);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.yes:hover {
+  transform: scale(1.08);
+}
+
+.no {
+  position: absolute;
+  font-size: 16px;
+  padding: 12px 20px;
+  background: #ffccd5;
+  color: #b30059;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.no:hover {
+  transform: scale(1.1);
+}
+
+/* Hearts */
+.heart {
+  position: absolute;
+  color: #ff3366;
+  animation: float 6s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(100vh);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Will you be my Valentine? 💘</h1>
+  <div class="buttons">
+    <button class="yes" onclick="yes()">YES 💖</button>
+    <button class="no" id="noBtn">NO 💔</button>
+  </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+
+/* زر NO يهرب */
+noBtn.addEventListener("mouseover", () => {
+  const x = Math.random() * 260 - 130;
+  const y = Math.random() * 140 - 70;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+/* زر YES يفتح واتساب */
+function yes() {
+  window.location.href =
+   "https://wa.me/96171236449?text=YES%20I%20AM%20YOUR%20VALENTINE%20💖";
+}
+
+/* Floating hearts */
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (18 + Math.random() * 25) + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 6000);
+}, 250);
+</script>
+
+</body>
+</html>
